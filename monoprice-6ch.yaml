@@ -1,0 +1,79 @@
+esphome:
+  name: monoprice-6ch
+  platform: ESP32
+  board: nodemcu-32s
+  includes:
+    - monoprice-6ch-rs232.h
+    - monoprice-6ch-rs232.cpp
+
+# Enable logging
+logger:
+  logs:
+    monoprice-6ch-rs232: DEBUG
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+web_server:
+
+ota:
+  password: ""
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Monoprice 6Ch Fallback Hotspot"
+    password: !secert ap_password
+
+captive_portal:
+
+uart:
+  id: uart_bus
+  tx_pin: 17
+  rx_pin: 16
+  baud_rate: 9600
+
+custom_component:
+- lambda: |-
+    auto my_custom = new Monoprice6chRs232Component(5, id(uart_bus));
+    return {my_custom};
+
+switch:
+  - platform: restart
+    name: "EspHome Restart"
+
+  - platform: uart
+    uart_id: uart_bus
+    name: "Query All"
+    data: [0x0d, 0x0a, 0x3f, 0x31, 0x30, 0x0d, 0x0a] # ?10\cr
+
+  - platform: uart
+    uart_id: uart_bus
+    name: "1 On"
+    data: [0x0d, 0x0a, 0x3c, 0x31, 0x31, 0x50, 0x52, 0x30, 0x31, 0x0d, 0x0a] # ?10\cr
+
+  - platform: uart
+    uart_id: uart_bus
+    name: "1 Off"
+    data: [0x0d, 0x0a, 0x3c, 0x31, 0x31, 0x50, 0x52, 0x30, 0x30, 0x0d, 0x0a] # ?10\cr
+
+  - platform: uart
+    uart_id: uart_bus
+    name: "1 pa On"
+    data: [0x0d, 0x0a, 0x3c, 0x31, 0x31, 0x50, 0x41, 0x30, 0x31, 0x0d, 0x0a] # ?10\cr
+
+  - platform: uart
+    uart_id: uart_bus
+    name: "1 pa Off"
+    data: [0x0d, 0x0a, 0x3c, 0x31, 0x31, 0x50, 0x41, 0x30, 0x30, 0x0d, 0x0a] # ?10\cr
+#
+# external_components:
+#   - source: github://oxan/esphome-stream-server
+#
+# stream_server:
+#    uart_id: uart_bus
+#    port: 1234
