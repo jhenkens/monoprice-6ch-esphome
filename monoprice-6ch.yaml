@@ -105,11 +105,71 @@ switch:
 
 select:
   - platform: monoprice_10761
+    name: "${zone_11} Input"
+    zone: 11
+    command: "CH"
+  - platform: monoprice_10761
+    name: "${zone_12} Input"
+    zone: 12
+    command: "CH"
+  - platform: monoprice_10761
     name: "${zone_13} Input"
     zone: 13
     command: "CH"
+  - platform: monoprice_10761
+    name: "${zone_14} Input"
+    zone: 14
+    command: "CH"
+  - platform: monoprice_10761
+    name: "${zone_15} Input"
+    zone: 15
+    command: "CH"
+  - platform: monoprice_10761
+    name: "${zone_16} Input"
+    zone: 16
+    command: "CH"
 
 number:
+  - platform: monoprice_10761
+    name: "${zone_11} Volume"
+    zone: 11
+    command: "VO"
+
+  - platform: monoprice_10761
+    name: "${zone_11} Balance"
+    zone: 11
+    command: "BL"
+
+  - platform: monoprice_10761
+    name: "${zone_11} Bass"
+    zone: 11
+    command: "BS"
+
+  - platform: monoprice_10761
+    name: "${zone_11} Trebel"
+    zone: 11
+    command: "TR"
+
+  - platform: monoprice_10761
+    name: "${zone_12} Volume"
+    zone: 12
+    command: "VO"
+
+  - platform: monoprice_10761
+    name: "${zone_12} Balance"
+    zone: 12
+    command: "BL"
+
+  - platform: monoprice_10761
+    name: "${zone_12} Bass"
+    zone: 12
+    command: "BS"
+
+  - platform: monoprice_10761
+    name: "${zone_12} Trebel"
+    zone: 12
+    command: "TR"
+
   - platform: monoprice_10761
     name: "${zone_13} Volume"
     zone: 13
@@ -128,6 +188,66 @@ number:
   - platform: monoprice_10761
     name: "${zone_13} Trebel"
     zone: 13
+    command: "TR"
+
+  - platform: monoprice_10761
+    name: "${zone_14} Volume"
+    zone: 14
+    command: "VO"
+
+  - platform: monoprice_10761
+    name: "${zone_14} Balance"
+    zone: 14
+    command: "BL"
+
+  - platform: monoprice_10761
+    name: "${zone_14} Bass"
+    zone: 14
+    command: "BS"
+
+  - platform: monoprice_10761
+    name: "${zone_14} Trebel"
+    zone: 14
+    command: "TR"
+
+  - platform: monoprice_10761
+    name: "${zone_15} Volume"
+    zone: 15
+    command: "VO"
+
+  - platform: monoprice_10761
+    name: "${zone_15} Balance"
+    zone: 15
+    command: "BL"
+
+  - platform: monoprice_10761
+    name: "${zone_15} Bass"
+    zone: 15
+    command: "BS"
+
+  - platform: monoprice_10761
+    name: "${zone_15} Trebel"
+    zone: 15
+    command: "TR"
+
+  - platform: monoprice_10761
+    name: "${zone_16} Volume"
+    zone: 16
+    command: "VO"
+
+  - platform: monoprice_10761
+    name: "${zone_16} Balance"
+    zone: 16
+    command: "BL"
+
+  - platform: monoprice_10761
+    name: "${zone_16} Bass"
+    zone: 16
+    command: "BS"
+
+  - platform: monoprice_10761
+    name: "${zone_16} Trebel"
+    zone: 16
     command: "TR"
 
 binary_sensor:
