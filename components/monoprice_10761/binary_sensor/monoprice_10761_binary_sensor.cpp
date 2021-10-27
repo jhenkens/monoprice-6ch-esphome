@@ -1,0 +1,38 @@
+#include "esphome/core/log.h"
+#include "monoprice_10761_binary_sensor.h"
+
+namespace esphome {
+namespace monoprice_10761 {
+
+static const char *const TAG = "monoprice_10761.binary_sensor";
+
+void Monoprice10761BinarySensor::setup() {
+    this->status_ = this->parent_->get_zone(this->zone_id_);
+    this->status_->register_listener(this->data_type_, [this](const uint8_t data) {
+        this->publish_state((bool) data);
+    });
+}
+
+void Monoprice10761BinarySensor::dump_config() {
+    LOG_BINARY_SENSOR("", "Monoprice10761 BinarySensor", this);
+    ESP_LOGCONFIG(TAG, "  BinarySensor has zone ID %u and type %s", this->status_->zone_, ZoneStatus::data_type_to_str(this->data_type_));
+}
+
+void Monoprice10761BinarySensor::set_parent(Monoprice10761 *monoprice_10761_parent){
+    this->parent_ = monoprice_10761_parent;
+}
+
+void Monoprice10761BinarySensor::set_zone(uint8_t zone_id){
+    this->zone_id_ = zone_id;
+}
+
+void Monoprice10761BinarySensor::set_data_type(const char* data_type_str){
+    ZoneStatusDataType type = ZoneStatus::str_to_data_type(data_type_str);
+    if(type == ZoneStatusDataType::UNKNOWN){
+        ESP_LOGE(TAG, "UNKNOWN DATA TYPE: %s", data_type_str);
+    }
+    this->data_type_ = type;
+}
+
+}  // namespace monoprice_10761
+}  // namespace esphome

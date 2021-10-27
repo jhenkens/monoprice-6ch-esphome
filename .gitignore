@@ -8,4 +8,5 @@
 **/src/
 **/platformio.ini
 /secrets.yaml
-monoprice-6ch
+/monoprice-6ch
+__pycache__/
