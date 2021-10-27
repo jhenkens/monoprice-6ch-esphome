@@ -14,7 +14,6 @@ void Monoprice10761Number::setup() {
 }
 
 void Monoprice10761Number::control(float state) {
-    ESP_LOGV(TAG, "Setting zone %u : %s", this->status_->zone, ONOFF(state));
     this->status_->set(this->data_type_, (uint8_t) (state-this->offset_));
     this->status_->update(this->data_type_, (uint8_t) (state-this->offset_));
 }

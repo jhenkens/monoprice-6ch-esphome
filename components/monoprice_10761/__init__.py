@@ -52,7 +52,7 @@ async def to_code(config):
                 name = input_config[CONF_NAME]
                 if name is not None:
                     input['name'] = name
-            input['hide'] = input[CONF_HIDDEN]
+            input['hide'] = input_config[CONF_HIDDEN]
     for input in inputs:
         cg.add(var.set_input(input['num'], input['name'], input['hide']))
 

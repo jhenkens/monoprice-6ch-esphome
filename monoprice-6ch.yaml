@@ -74,25 +74,49 @@ switch:
     zone: 11
     command: "PR"
   - platform: monoprice_10761
+    name: "${zone_11} Mute"
+    zone: 11
+    command: "MU"
+  - platform: monoprice_10761
     name: "${zone_12} Power"
     zone: 12
     command: "PR"
+  - platform: monoprice_10761
+    name: "${zone_12} Mute"
+    zone: 12
+    command: "MU"
   - platform: monoprice_10761
     name: "${zone_13} Power"
     zone: 13
     command: "PR"
   - platform: monoprice_10761
+    name: "${zone_13} Mute"
+    zone: 13
+    command: "MU"
+  - platform: monoprice_10761
     name: "${zone_14} Power"
     zone: 14
     command: "PR"
+  - platform: monoprice_10761
+    name: "${zone_14} Mute"
+    zone: 14
+    command: "MU"
   - platform: monoprice_10761
     name: "${zone_15} Power"
     zone: 15
     command: "PR"
   - platform: monoprice_10761
+    name: "${zone_15} Mute"
+    zone: 15
+    command: "MU"
+  - platform: monoprice_10761
     name: "${zone_16} Power"
     zone: 16
     command: "PR"
+  - platform: monoprice_10761
+    name: "${zone_16} Mute"
+    zone: 16
+    command: "MU"
 
   - platform: restart
     name: "EspHome Restart"

@@ -301,7 +301,7 @@ void ZoneStatus::set(ZoneStatusDataType type, const unsigned char val){
     buf[6] = '0' + val % 10;
     buf[7] = '\r';
     buf[8] = '\n';
-    ESP_LOGD(TAG, "Setting zone %c param %s to %c", this->zone_, type_str, val);
+    ESP_LOGD(TAG, "Setting zone %u param %s to %u", this->zone_, type_str, val);
     this->send_command_(buf, len);
 }
 

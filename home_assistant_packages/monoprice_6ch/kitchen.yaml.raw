@@ -1,0 +1,66 @@
+script:
+  monoprice_increase_volume:
+    sequence:
+      - service: number.set_value
+        data:
+          value: "{{ (states(entity_id) | int) + 1}}"
+        target:
+          entity_id: "{{ entity_id }}"
+  monoprice_decrease_volume:
+    sequence:
+      - service: number.set_value
+        data:
+          value: "{{ (states(entity_id) | int) - 1}}"
+        target:
+          entity_id: "{{ entity_id }}"
+
+sensor:
+  - platform: template
+    sensors:
+      kitchen_volume_pct:
+        friendly_name: "Kitchen Volume Percent"
+        value_template: "{{ ((states('number.kitchen_volume')|int) / 38.0) | round(2) }}"
+
+media_player:
+  platform: universal
+  name: Kitchen
+  commands:
+    turn_on:
+      service: switch.turn_on
+      target:
+        entity_id: switch.kitchen_power
+    turn_off:
+      service: switch.turn_off
+      target:
+        entity_id: switch.kitchen_power
+    volume_up:
+      service: script.monoprice_increase_volume
+      data:
+        entity_id: number.kitchen_volume
+    volume_down:
+      service: script.monoprice_decrease_volume
+      data:
+        entity_id: number.kitchen_volume
+    volume_mute:
+      service: switch.turn_on
+      target:
+        entity_id: switch.kitchen_mute
+    select_source:
+      service: select.select_option
+      target:
+        entity_id: select.kitchen_input
+      data:
+        option: "{{ source }}"
+    volume_set:
+      service: number.set_value
+      target:
+        entity_id: number.kitchen_volume
+      data:
+        volume_level: "{{ (volume_level * 38) | int }}"
+
+  attributes:
+    state: switch.kitchen_power
+    is_volume_muted: switch.kitchen_mute
+    volume_level: sensor.kitchen_volume_pct
+    source: select.kitchen_input
+    source_list: select.kitchen_input|options
