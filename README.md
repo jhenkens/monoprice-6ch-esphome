@@ -22,7 +22,7 @@ You need a null-model (crossed pins) Male-Male cord to connect. Amazingly, these
 
 1. ESP: https://smile.amazon.com/gp/product/B099PDG16B
 2. Power (provides 5V for ESP, and 12V boosted for trigger): https://smile.amazon.com/gp/product/B08R5LMQH1
-3. Serial breakout: https://smile.amazon.com/gp/product/B07Z5Y1WKX
+3. Serial breakout: ~https://smile.amazon.com/gp/product/B07Z5Y1WKX~ (The exact item I ordered is no longer available, but it looks like this: https://smile.amazon.com/gp/product/B07PFB4MHR )
 4. Serial cable (straight through, M-F): https://smile.amazon.com/gp/product/B081GHYHPR
 5. Serial null-modem adapter (M-M): https://smile.amazon.com/gp/product/B01HMNIYJQ
 
