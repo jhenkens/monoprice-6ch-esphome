@@ -82,7 +82,8 @@ switch:
     name: "PA Mode"
     pin:
       number: 15
-      inverted: true
+      inverted: false
+    restore_mode: ALWAYS_OFF
   - platform: monoprice_10761
     name: "${zone_11} Power"
     zone: 11
