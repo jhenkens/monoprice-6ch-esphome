@@ -5,7 +5,7 @@ It has support for both a serial-socket interface (to support the existing iOS a
 
 I currently have it configured to also have a relay and a 12V trigger onboard, to control the PA functionality. However, this could just be done via software as well.
 
-I made an initial run of 5 PCBs via JLCPCB, with all of the non-modules listed below presoldered. It works excellently electrically. Physically, I needed to expand the cutout for the ethernet port, and add a small cutout for the RS232 (done).
+I made an initial run of 5 PCBs via JLCPCB (total cost: $22 shipped), with all of the non-modules listed below presoldered. It works excellently electrically. Physically, I needed to expand the cutout for the ethernet port, and add a small cutout for the RS232 (done).
 
 [You can find my schematic here](https://easyeda.com/johhen/monoprice_controller)
 
