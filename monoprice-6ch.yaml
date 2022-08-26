@@ -11,7 +11,7 @@ esphome:
   platform: ESP32
   board: esp-wrover-kit
   libraries:
-    - AsyncTCP
+    - AsyncTCP-esphome
 
 # Enable logging
 logger:
@@ -65,7 +65,7 @@ monoprice_10761:
   update_interval: 1h # Issuing commands makes a bit of background noise, so lets keep it low.
   inputs:
     - number: 1
-      name: "Soundconnect"
+      name: "Sonos Port"
     - number: 2
       hide: true
     - number: 3
