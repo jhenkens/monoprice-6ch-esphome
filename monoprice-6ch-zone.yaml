@@ -1,0 +1,37 @@
+switch:
+  - platform: monoprice_10761
+    name: "${zone_name} Power"
+    zone: ${zone_number}
+    command: "PR"
+  - platform: monoprice_10761
+    name: "${zone_name} Mute"
+    zone: ${zone_number}
+    command: "MU"
+
+select:
+  - platform: monoprice_10761
+    name: "${zone_name} Input"
+    zone: ${zone_number}
+    command: "CH"
+
+
+number:
+  - platform: monoprice_10761
+    name: "${zone_name} Volume"
+    zone: ${zone_number}
+    command: "VO"
+
+  - platform: monoprice_10761
+    name: "${zone_name} Balance"
+    zone: ${zone_number}
+    command: "BL"
+
+  - platform: monoprice_10761
+    name: "${zone_name} Bass"
+    zone: ${zone_number}
+    command: "BS"
+
+  - platform: monoprice_10761
+    name: "${zone_name} Trebel"
+    zone: ${zone_number}
+    command: "TR"

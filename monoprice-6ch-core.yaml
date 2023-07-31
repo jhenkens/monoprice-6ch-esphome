@@ -1,0 +1,78 @@
+substitutions:
+  uart_tx_pin: '17'
+  uart_rx_pin: '5'
+  pa_mode_pin: '15'
+  update_interval: "1h" # Issuing commands makes a bit of background noise, so lets keep it low.
+  input_1_name: Input 1
+  input_1_hidden: 'false'
+  input_2_name: Input 2
+  input_2_hidden: 'true'
+  input_3_name: Input 3
+  input_3_hidden: 'true'
+  input_4_name: Input 4
+  input_4_hidden: 'true'
+  input_5_name: Input 5
+  input_5_hidden: 'true'
+  input_6_name: Input 6
+  input_6_hidden: 'true'
+
+switch:
+  - platform: gpio
+    name: "PA Mode"
+    pin:
+      number: ${pa_mode_pin}
+      inverted: false
+    restore_mode: ALWAYS_OFF
+
+  - platform: template
+    name: "Update all zones"
+    id: update_zones
+    turn_on_action:
+      - component.update: monoprice
+
+binary_sensor:
+  - platform: monoprice_10761
+    name: "${zone_11} Keypad Status"
+    zone: 11
+    command: LS
+
+uart:
+  id: uart_bus
+  tx_pin: ${uart_tx_pin}
+  rx_pin: ${uart_rx_pin} 
+  baud_rate: 9600
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/jhenkens/monoprice-6ch-esphome
+      ref: main
+    components: [ monoprice_10761 ]
+  # - source:
+  #     type: local
+  #     path: components
+  #   components: [ monoprice_10761 ]
+
+monoprice_10761:
+  id: monoprice
+  uart_id: uart_bus
+  update_interval: "${update_interval}"
+  inputs:
+    - number: 1
+      name: "${input_1_name}"
+      hide: ${input_1_hidden}
+    - number: 2
+      name: "${input_2_name}"
+      hide: ${input_2_hidden}
+    - number: 3
+      name: "${input_3_name}"
+      hide: ${input_3_hidden}
+    - number: 4
+      name: "${input_4_name}"
+      hide: ${input_4_hidden}
+    - number: 5
+      name: "${input_5_name}"
+      hide: ${input_5_hidden}
+    - number: 6
+      name: "${input_6_name}"
+      hide: ${input_6_hidden}
